@@ -1,15 +1,15 @@
-﻿using MiProyecto;
-using Npgsql;
+﻿using Npgsql;
 using NpgsqlTypes;
-using System;
+using SistemaGestionData;
+using SistemaGestionEntities;
 
 namespace AppClientesData
 {
-    public class UsersData
+    public class UsersData : IUsersRepository
     {
-        public static Usuario GetUserById(int IdUser)
+        public UsuarioDto GetUserById(int IdUser)
         {
-            Usuario userList = new Usuario();
+            UsuarioDto userList = new UsuarioDto();
 
             var query = "Select Id, Nombre, Apellido, NombreUsuario, Contraseña, Mail FROM coder.Usuario where Id = @IdUser";
 
@@ -32,7 +32,7 @@ namespace AppClientesData
                         {
                             while (reader.Read()) 
                             {
-                                var user = new Usuario();
+                                var user = new UsuarioDto();
 
                                 user.Id = Convert.ToInt32(reader["Id"]);
                                 user.Apellido = reader["Apellido"].ToString();
@@ -49,9 +49,9 @@ namespace AppClientesData
             return userList;
         }
 
-        public static List<Usuario> GetUserList()
+        public List<UsuarioDto> GetUserList()
         {
-            List<Usuario> userList = new List<Usuario>();
+            List<UsuarioDto> userList = new List<UsuarioDto>();
 
             var query = "Select Id, Nombre, Apellido, NombreUsuario, Contraseña, Mail FROM coder.Usuario";
     
@@ -69,7 +69,7 @@ namespace AppClientesData
                         {
                             while (reader.Read())
                             {
-                                var user = new Usuario();
+                                var user = new UsuarioDto();
 
                                 user.Id = Convert.ToInt32(reader["Id"]);
                                 user.Apellido = reader["Apellido"].ToString();
@@ -88,7 +88,7 @@ namespace AppClientesData
             return userList;
         }
 
-        public static void CreateUser(Usuario user)
+        public void CreateUser(UsuarioDto user)
         {
             var query = @"insert into coder.Usuario (Nombre, Apellido, NombreUsuario, Contraseña, Mail)
                 values(@Nombre, @Apellido, @NombreUsuario, @Contraseña, @Mail)";
@@ -112,7 +112,7 @@ namespace AppClientesData
             }
         }
 
-        public static void UpdateUser(Usuario user)
+        public void UpdateUser(UsuarioDto user)
         {
             var query = @"update coder.Usuario
                         set Nombre = @Nombre, 
@@ -141,7 +141,7 @@ namespace AppClientesData
             }
         }
 
-        public static void DeleteUser(Usuario user)
+        public void DeleteUser(UsuarioDto user)
         {
             var query = "Delete FROM coder.Usuario where Id = @Id";
 

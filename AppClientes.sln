@@ -3,22 +3,24 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33213.308
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SistemaGestionUI", "AppClientes\SistemaGestionUI.csproj", "{5695A3A8-15CE-4AD8-961C-047E5DD07439}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SistemaGestionUI", "AppClientes\SistemaGestionUI.csproj", "{5695A3A8-15CE-4AD8-961C-047E5DD07439}"
 	ProjectSection(ProjectDependencies) = postProject
 		{01D74FCC-DED2-48D6-B170-42D682AAEEEF} = {01D74FCC-DED2-48D6-B170-42D682AAEEEF}
 		{A5C604D1-FFCE-433D-8520-64B753A84277} = {A5C604D1-FFCE-433D-8520-64B753A84277}
 		{B3BEFFE5-CE37-4430-B59C-938665A03BBB} = {B3BEFFE5-CE37-4430-B59C-938665A03BBB}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SistemaGestionEntities", "AppClientesEntities\SistemaGestionEntities.csproj", "{A5C604D1-FFCE-433D-8520-64B753A84277}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SistemaGestionEntities", "AppClientesEntities\SistemaGestionEntities.csproj", "{A5C604D1-FFCE-433D-8520-64B753A84277}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SistemaGestionData", "AppClientesData\SistemaGestionData.csproj", "{01D74FCC-DED2-48D6-B170-42D682AAEEEF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SistemaGestionData", "AppClientesData\SistemaGestionData.csproj", "{01D74FCC-DED2-48D6-B170-42D682AAEEEF}"
 	ProjectSection(ProjectDependencies) = postProject
 		{A5C604D1-FFCE-433D-8520-64B753A84277} = {A5C604D1-FFCE-433D-8520-64B753A84277}
 		{B3BEFFE5-CE37-4430-B59C-938665A03BBB} = {B3BEFFE5-CE37-4430-B59C-938665A03BBB}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SistemaGestionBusiness", "AppClientesBusiness\SistemaGestionBusiness.csproj", "{B3BEFFE5-CE37-4430-B59C-938665A03BBB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SistemaGestionBusiness", "AppClientesBusiness\SistemaGestionBusiness.csproj", "{B3BEFFE5-CE37-4430-B59C-938665A03BBB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppClientsUserAPI", "AppClientsUserAPI\AppClientsUserAPI.csproj", "{116DC106-30C2-4A36-9341-77090753666B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -42,6 +44,10 @@ Global
 		{B3BEFFE5-CE37-4430-B59C-938665A03BBB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B3BEFFE5-CE37-4430-B59C-938665A03BBB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B3BEFFE5-CE37-4430-B59C-938665A03BBB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{116DC106-30C2-4A36-9341-77090753666B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{116DC106-30C2-4A36-9341-77090753666B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{116DC106-30C2-4A36-9341-77090753666B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{116DC106-30C2-4A36-9341-77090753666B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

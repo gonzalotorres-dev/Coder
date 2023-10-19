@@ -1,17 +1,17 @@
-﻿using MiProyecto;
-using Npgsql;
+﻿using Npgsql;
 using NpgsqlTypes;
-using System;
+using SistemaGestionData;
+using SistemaGestionEntities;
 
 namespace AppClientesData
 {
-    public static class ProductData
+    public class ProductData : IProductRepository
     {
-        public static Producto GetProductById(int IdProduct)
+        public ProductoDto GetProductById(int IdProduct)
         {
             string connectionString = @"Host=localhost;Port=5432;UserName=postgres;Password=Ab123456!";
 
-            Producto productList = new Producto();
+            ProductoDto productList = new ProductoDto();
 
             var query = "Select Id, Descripcion, Costo, PrecioVenta, Stock, IdUsuario FROM coder.Producto where Id = @IdProducto";
 
@@ -32,7 +32,7 @@ namespace AppClientesData
                         {
                             while (reader.Read()) 
                             {
-                                var product = new Producto();
+                                var product = new ProductoDto();
 
                                 product.Id = Convert.ToInt32(reader["Id"]);
                                 product.Descripcion = reader["Descripciones"].ToString();
@@ -49,9 +49,9 @@ namespace AppClientesData
             return productList;
         }
 
-        public static List<Producto> GetProductList()
+        public List<ProductoDto> GetProductList()
         {
-            List<Producto> productList = new List<Producto>();
+            List<ProductoDto> productList = new List<ProductoDto>();
 
             string connectionString = @"Host=localhost;Port=5432;UserName=postgres;Password=Ab123456!";
 
@@ -69,7 +69,7 @@ namespace AppClientesData
                         {
                             while (reader.Read())
                             {
-                                var product = new Producto();
+                                var product = new ProductoDto();
 
                                 product.Id = Convert.ToInt32(reader["Id"]);
                                 product.Descripcion = reader["Descripciones"].ToString();
@@ -88,7 +88,7 @@ namespace AppClientesData
             return productList;
         }
 
-        public static void CreateProduct(Producto product)
+        public void CreateProduct(ProductoDto product)
         {
             var query = @"insert into coder.Producto (Descripcion, Costo, PrecioVenta, Stock, IdUsuario)
                 values(@Descripcion, @Costo, @PrecioVenta, @Stock, @IdUsuario)";
@@ -112,7 +112,7 @@ namespace AppClientesData
             }
         }
 
-        public static void UpdateProduct(Producto product)
+        public void UpdateProduct(ProductoDto product)
         {
             var query = @"update coder.Producto
                         set Descripcion = @Descripcion, 
@@ -141,7 +141,7 @@ namespace AppClientesData
             }
         }
 
-        public static void DeleteProduct(Producto product)
+        public void DeleteProduct(ProductoDto product)
         {
             var query = "Delete FROM coder.Producto where Id = @Id";
 

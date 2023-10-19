@@ -1,15 +1,15 @@
-﻿using MiProyecto;
-using Npgsql;
+﻿using Npgsql;
 using NpgsqlTypes;
-using System;
+using SistemaGestionData;
+using SistemaGestionEntities;
 
 namespace AppClientesData
 {
-    public static class SalesData
+    public class SalesData : ISalesRepository
     {
-        public static Venta GetSalesById(int IdSales)
+        public VentaDto GetSalesById(int IdSales)
         {
-            Venta salesList = new Venta();
+            VentaDto salesList = new VentaDto();
 
             var query = "Select Id, Comentarios, IdUsuario FROM coder.Venta where Id = @IdSales";
 
@@ -32,7 +32,7 @@ namespace AppClientesData
                         {
                             while (reader.Read()) 
                             {
-                                var sale = new Venta();
+                                var sale = new VentaDto();
 
                                 sale.Id = Convert.ToInt32(reader["Id"]);
                                 sale.Comentarios = reader["Comentarios"].ToString();
@@ -46,9 +46,9 @@ namespace AppClientesData
             return salesList;
         }
 
-        public static List<Venta> GetSalesList()
+        public List<VentaDto> GetSalesList()
         {
-            List<Venta> salesList = new List<Venta>();
+            List<VentaDto> salesList = new List<VentaDto>();
 
             var query = "Select Id, Comentarios, IdUsuario FROM coder.Venta";
 
@@ -66,7 +66,7 @@ namespace AppClientesData
                         {
                             while (reader.Read())
                             {
-                                var sale = new Venta();
+                                var sale = new VentaDto();
 
                                 sale.Id = Convert.ToInt32(reader["Id"]);
                                 sale.Comentarios = reader["Comentarios"].ToString();
@@ -82,7 +82,7 @@ namespace AppClientesData
             return salesList;
         }
 
-        public static void CreateSales(Venta sales)
+        public void CreateSales(VentaDto sales)
         {
             var query = @"insert into coder.Venta (Comentarios, IdUsuario)
                 values(@Comentarios, @IdUsuario)";
@@ -103,7 +103,7 @@ namespace AppClientesData
             }
         }
 
-        public static void UpdateSales(Venta sales)
+        public void UpdateSales(VentaDto sales)
         {
             var query = @"update coder.Venta
                         set Comentarios = @Comentarios, 
@@ -126,7 +126,7 @@ namespace AppClientesData
             }
         }
 
-        public static void DeleteSale(Venta sales)
+        public void DeleteSale(VentaDto sales)
         {
             var query = "Delete FROM coder.Venta where Id = @Id";
 
